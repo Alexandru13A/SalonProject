@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{head_fragment :: page_head(${pageTitle},'none')}" />
+
+<body>
+
+  <header th:replace="~{navigation:: page_navbar }" />
+
+  <div class="container-fluid" style="margin-top: 200px;">
+
+    <div class="text-center" style="color: white;">
+      <h2>Make an appointment</h2>
+    </div>
+
+    <form th:action="@{/save}" method="post" th:object="${customer}" style="max-width: 500px; margin: 0 auto;">
+
+      <div class="border border-secondary rounded p-3">
+
+        <div class="form-group row" style="color: white;">
+          <label class="col-sm-4 col-form-label">First Name:</label>
+          <div class="col-sm-8">
+            <input type="text" th:field="*{firstName}" class="form-control" required="required" maxlength="45"
+              minlength="2" />
+          </div>
+        </div>
+
+        <div class="form-group row" style="color: white;">
+          <label class="col-sm-4 col-form-label">Last Name:</label>
+          <div class="col-sm-8">
+            <input type="text" th:field="*{lastName}" class="form-control" required="required" maxlength="45"
+              minlength="2" />
+          </div>
+        </div>
+
+        <div class="form-group row" style="color: white;">
+          <label class="col-sm-4 col-form-label">Phone number:</label>
+          <div class="col-sm-8">
+            <input type="text" th:field="*{phoneNumber}" class="form-control" required="required" maxlength="11"
+              minlength="8" />
+          </div>
+        </div>
+
+        <div class="form-group row" style="color: white;">
+          <label class="col-sm-4 col-form-label">Eyebrows:</label>
+          <div class="col-sm-8">
+            <select th:field="*{eyebrows}" class="service-price">
+              <option value="NONE" data-price="0.00">None</option>
+              <option value="PAINT" data-price="10.00">Paint-10$</option>
+              <option value="SHAPING" data-price="12.00">Shaping-12$</option>
+              <option value="TRIMMED" data-price="6.00">Trimmed-6$</option>
+              <option value="PAINT AND SHAPING" data-price="22.00">Paint and Shaping-22$</option>
+              <option value="PAINT AND TRIMMED" data-price="16.00">Paint and Trimmed-16$</option>
+              <option value="SHAPING AND TRIMMED" data-price="18.00">Shaping and Trimmed-18$</option>
+              <option value="ALL" data-price="25.00">All-25$</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row" style="color: white;">
+          <label class="col-sm-4 col-form-label">Hair Removal:</label>
+          <div class="col-sm-8">
+            <select th:field="*{hairRemoval}" class="service-price">
+              <option value="NONE" data-price="0.00">None</option>
+              <option value="LEGS" data-price="20.00">Legs -20$</option>
+              <option value="HANDS" data-price="18.00">Hands -18$</option>
+              <option value="PUBIC" data-price="25.00">Pubic -25$</option>
+              <option value="LEGS AND HANDS" data-price="38.00">Legs and Hands-38$</option>
+              <option value="LEGS AND PUBIC" data-price="45.00">Legs and Pubic-45$</option>
+              <option value="HANDS AND PUBIC" data-price="43.00">Hands and Pubic-43$</option>
+              <option value="ALL" data-price="60.00">All -60$</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row" style="color: white;">
+          <label class="col-sm-4 col-form-label">Manicure:</label>
+          <div class="col-sm-8">
+            <select th:field="*{manicure}" class="service-price">
+              <option value="NONE" data-price="0.00">None</option>
+              <option value="PERMANENT" data-price="18.00">Permanent-18$</option>
+              <option value="SEMIPERMANENT" data-price="12.00">Semipermanent-12$</option>
+              <option value="SIMPLE MANICURE" data-price="10.00">Simple manicure-10$</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row" style="color: white;">
+          <label class="col-sm-4 col-form-label">Pedicure:</label>
+          <div class="col-sm-8">
+            <select th:field="*{pedicure}" class="service-price">
+              <option value="None" data-price="0.00">None</option>
+              <option value="PERMANENT" data-price="18.00">Permanent-18$</option>
+              <option value="SEMIPERMANENT" data-price="12.00">Semipermanent-12$</option>
+              <option value="SIMPLE PEDICURE" data-price="10.00">Simple pedicure-10$</option>
+              <option value="ALL">All</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row" style="color: white;">
+          <label class="col-sm-4 col-form-label">Total Price:</label>
+          <div class="col-sm-4">
+            <span id="total-price">0.00</span>
+            <span>$</span>
+          </div>
+        </div>
+
+
+        <label for="date" style="color: white;">Date:</label>
+        <input type="date" id="date" name="date" th:field="*{reservationDate}" required>
+
+        <label for="hour" style="color: white;">Hour:</label>
+        <select id="hour" name="hour" th:field="*{reservationHour}" required>
+       
+        </select>
+
+        <div>&nbsp;</div>
+
+        <div class="text-center">
+          <input type="submit" value="Done" class="btn btn-primary" />
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+
+    var contextPath = "[[@{/}]]"
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      var selectElements = document.querySelectorAll(".service-price");
+      var totalPriceSpan = document.getElementById("total-price");
+
+
+      selectElements.forEach(function (selectElement) {
+        selectElement.addEventListener("change", function () {
+          var total = 0;
+          selectElements.forEach(function (select) {
+            var selectedOption = select.options[select.selectedIndex];
+            var price = parseFloat(selectedOption.getAttribute("data-price"));
+            total += price;
+          });
+          totalPriceSpan.textContent = total.toFixed(2);
+        });
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var dateInput = document.getElementById("date");
+      var today = new Date(); // Obține data curentă
+
+      // Formatează data curentă în format ISO yyyy-mm-dd
+      var todayFormatted = today.toISOString().split('T')[0];
+
+      dateInput.min = todayFormatted; // Setează data minimă la data curentă
+
+      dateInput.addEventListener("change", function () {
+        // Dacă utilizatorul selectează o dată anterioară, resetați câmpul la data curentă
+        if (dateInput.value < todayFormatted) {
+          dateInput.value = todayFormatted;
+        }
+      });
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+  var dateInput = document.getElementById("date");
+  var hourSelect = document.getElementById("hour");
+
+  dateInput.addEventListener("change", function () {
+    var selectedDate = dateInput.value;
+
+    fetch(contextPath + "unavailable_hours?date=" + selectedDate)
+      .then(response => response.json())
+      .then(data => {
+        // Șterge toate opțiunile existente din selectorul de ore
+        while (hourSelect.firstChild) {
+          hourSelect.removeChild(hourSelect.firstChild);
+        }
+
+        var availableHours = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"];
+
+        data.forEach(function (unavailableHour) {
+          // Elimină orele indisponibile din lista de ore disponibile
+          availableHours = availableHours.filter(hour => hour !== unavailableHour);
+        });
+
+        // Adaugă opțiunile pentru orele disponibile în selector
+        availableHours.forEach(function (hour) {
+          var option = document.createElement("option");
+          option.value = hour;
+          option.text = hour;
+          hourSelect.appendChild(option);
+        });
+      });
+  });
+});
+  </script>
+</body>
+
+</html>

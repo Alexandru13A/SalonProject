@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <header  th:fragment="page_navbar" class="header">
+
+      <a th:href="@{/}" class="logo">
+        <img th:src="@{/images/salon_logo.png}" style="width: 65px;height:0 auto; border-radius: 50%;"/>
+      </a>
+
+      <input type="checkbox" id="check"/> 
+      <label for="check" class="icons">
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <i class='bx bx-x' id="close-icon"></i>
+      </label>
+
+      <nav class="navbar">
+        <a th:href="@{/}" style="--i:0;">Home</a>
+        <a th:href="@{/about}" style="--i:1;">About</a>
+        <a th:href="@{/contact}" style="--i:2;" >Contact</a>
+        <a th:href="@{/services}" style="--i:3;" >Services</a>
+      </nav>
+
+    </header>
+    
+</body>
+</html>

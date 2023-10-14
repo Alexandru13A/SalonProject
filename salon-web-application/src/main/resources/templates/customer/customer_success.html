@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{head_fragment :: page_head('Appointment information','none')}" />
+
+<body>
+  <header th:replace="~{navigation :: page_navbar}" />
+
+
+  <div>&nbsp;</div>
+
+  <div class="text-center" style="color: white;margin-top: 160px;">
+
+    <h2>thank you for the appointment at our salon </h2>
+    <h4>We are waiting for you on the appointment date</h4>
+    <h6>Information:</h6>
+
+    <div>
+      <div>
+        <b>Name: [[${fullName}]]</b>
+      </div>
+      <div>
+        <b>Date: [[${date}]]</b>
+      </div>
+      <div>
+        <b>Hour: [[${hour}]]</b>
+      </div>
+      <div>
+        <b>Total price: [[${totalPrice}]] $</b>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
