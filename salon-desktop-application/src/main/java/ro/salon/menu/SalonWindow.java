@@ -31,7 +31,7 @@ public class SalonWindow implements ActionListener {
 
 	public void createWindow() {
 		frame = new JFrame();
-		frame.setTitle("SALON ANDREEA");
+		frame.setTitle("SALON COSMOS");
 		frame.setBounds(100, 100, 400, 400);
 		frame.getContentPane().setBackground(Color.white);
 		frame.getContentPane().setLayout(null);

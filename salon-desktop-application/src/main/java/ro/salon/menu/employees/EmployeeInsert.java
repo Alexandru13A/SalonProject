@@ -39,7 +39,7 @@ public class EmployeeInsert extends JFrame implements ActionListener {
 
 	public void createWindow() {
 		frame = new JFrame();
-		frame.setTitle("APPOIIMENT");
+		frame.setTitle("ADD EMPLOYEE");
 		frame.setBounds(100, 100, 500, 500);
 		frame.getContentPane().setBackground(Color.white);
 		frame.getContentPane().setLayout(null);

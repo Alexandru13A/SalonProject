@@ -1,0 +1,16 @@
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #bd1292; /* culoarea de fundal */
+    color: #fff; /* culoarea textului */
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #bd1292; /* culoarea de fundal la hover */
+    transform: scale(1.05); /* mărește butonul la hover */
+    color: #fff;
+  }

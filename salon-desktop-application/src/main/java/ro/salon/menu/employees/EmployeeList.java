@@ -61,7 +61,7 @@ public class EmployeeList extends JFrame {
 		table = new JTable(dtm);
 		scrollPane.setViewportView(table);
 
-		JButton loadClients = new JButton("LOAD CLIENTS");
+		JButton loadClients = new JButton("LOAD EMPLOYEES");
 		loadClients.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dtm = (DefaultTableModel) table.getModel();
@@ -69,7 +69,7 @@ public class EmployeeList extends JFrame {
 				showEmployee();
 			}
 		});
-		loadClients.setBounds(435, 375, 123, 21);
+		loadClients.setBounds(435, 375, 140, 21);
 		getContentPane().add(loadClients);
 
 		JButton searchButton = new JButton("SEARCH");

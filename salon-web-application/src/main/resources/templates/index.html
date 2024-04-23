@@ -5,13 +5,13 @@
 
 <body>
   <header th:replace="~{navigation :: page_navbar}" />
-  
+
   <div class="container-fluid">
 
-    <div class="text-center" style="margin-top: 160px; color: white;" >
+    <div class="text-center" style="margin-top: 160px; color: white;">
       <h2> Welcome to Cosmos Salon</h2>
       <h4>Click the link bellow to make an appointment.</h4>
-      <a th:href="@{/create}" style="text-decoration: none;">Click here</a>
+      <a th:href="@{/create}" class="button" style="text-decoration: none;">Click here</a>
     </div>
   </div>
 
