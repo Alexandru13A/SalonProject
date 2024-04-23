@@ -18,4 +18,5 @@ The web application :Java, Spring Boot, Thymeleaf, HTML, CSS ,MySQL.
 ![Screenshot (75)](https://github.com/Alexandru13A/SalonProject/assets/88050926/c2144823-0bfa-49a0-8761-7534bddb507a)
 ![Screenshot (74)](https://github.com/Alexandru13A/SalonProject/assets/88050926/302a48a8-5d4b-461d-b5b9-e5d95d88d987)
 ![Screenshot (76)](https://github.com/Alexandru13A/SalonProject/assets/88050926/9f0703d3-e1a3-46de-9978-c6927b6bebed)
-![Screenshot (77)](https://github.com/Alexandru13A/SalonProject/assets/88050926/4b432c6c-73dc-4671-8235-c1b23dcbb44b)
+![Screenshot (77)](https://github.com/Alexandru13A/SalonProject/assets/88050926/e6a39946-56e9-4300-bd7e-9ce9f9d90ccc)
+
